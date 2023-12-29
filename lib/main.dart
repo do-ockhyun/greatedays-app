@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:greatedays/src/screen/main_wrapper_screen.dart';
+import 'package:greatedays/src/routes/main_router.dart';
+import 'package:greatedays/src/utils/local_storage.dart';
 
 void main() async {
   debugRepaintRainbowEnabled = true;
+
+  // load Store
+  await LocalStorage().ready();
 
   // 가로모드 방지
   await SystemChrome.setPreferredOrientations([
@@ -24,12 +28,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-      ),
-      home: const MainWrapperScreen(),
+    return MaterialApp.router(
+      routerConfig: MainRouter().main,
     );
   }
 }
