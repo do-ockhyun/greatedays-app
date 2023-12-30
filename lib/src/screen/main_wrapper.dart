@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greatedays/src/provider/auth_provider.dart';
 import 'package:greatedays/src/screen/auth/login_screen.dart';
-import 'package:greatedays/src/screen/home_screen.dart';
+import 'package:greatedays/src/screen/home/home_screen.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -15,7 +15,7 @@ class MainWrapperScreen extends StatefulWidget {
 
 class _MainWrapperScreenState extends State<MainWrapperScreen>
     with WidgetsBindingObserver {
-  var logger = Logger();
+  final logger = Logger();
 
   @override
   void initState() {
@@ -55,7 +55,7 @@ class _MainWrapperScreenState extends State<MainWrapperScreen>
       builder: (context, _, __) {
         return MultiProvider(
           providers: [
-            Provider<AuthProvider>(create: (_) => AuthProvider()),
+            ChangeNotifierProvider(create: (_) => AuthProvider()),
           ],
           child: Builder(
             builder: (context) {

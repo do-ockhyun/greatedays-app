@@ -10,7 +10,7 @@ class AuthProvider extends ChangeNotifier {
 
   //
   // bool get isAuth => _local.refreshToken.isNotEmpty;
-  bool get isAuth => false;
+  bool get isAuth => true;
 
   //
   Future<void> storeToken() async {

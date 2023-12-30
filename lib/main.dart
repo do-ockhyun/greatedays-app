@@ -7,6 +7,8 @@ import 'package:greatedays/src/utils/local_storage.dart';
 void main() async {
   debugRepaintRainbowEnabled = true;
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   // load Store
   await LocalStorage().ready();
 
