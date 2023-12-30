@@ -6,14 +6,20 @@ class AuthProvider extends ChangeNotifier {
 
   AuthProvider() {
     _local = LocalStorage();
+
+    /*
+    *  TEST !
+    */
+    _local.clearToken();
   }
 
   //
-  // bool get isAuth => _local.refreshToken.isNotEmpty;
-  bool get isAuth => true;
+  bool get isAuth => _local.refreshToken.isNotEmpty;
+  // bool get isAuth => true;
 
   //
-  Future<void> storeToken() async {
-    // _local.setRefreshToken(token);
+  Future<void> storeToken(String token) async {
+    _local.setRefreshToken(token);
+    notifyListeners();
   }
 }

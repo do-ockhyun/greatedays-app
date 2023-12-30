@@ -23,4 +23,8 @@ class LocalStorage {
     await _store.setString(_refreshTokenKey, token);
     return token;
   }
+
+  Future<void> clearToken() async {
+    await _store.remove(_refreshTokenKey);
+  }
 }

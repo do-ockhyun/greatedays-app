@@ -12,19 +12,6 @@ class CalendarLayout extends StatefulWidget {
 }
 
 class _CalendarLayoutState extends State<CalendarLayout> {
-  // CalendarFormat _calendarFormat = CalendarFormat.month;
-  // final DateTime _selectedDay = DateTime.now();
-
-  // void changeCalendarFormat() {
-  //   setState(() {
-  //     if (_calendarFormat == CalendarFormat.month) {
-  //       _calendarFormat = CalendarFormat.week;
-  //     } else if (_calendarFormat == CalendarFormat.week) {
-  //       _calendarFormat = CalendarFormat.month;
-  //     }
-  //   });
-  // }
-
   CalendarStyle calStyle() {
     return const CalendarStyle(
       // today
@@ -58,7 +45,6 @@ class _CalendarLayoutState extends State<CalendarLayout> {
   //
   @override
   Widget build(BuildContext context) {
-    // print("# -- _selectedDay ${_selectedDay.toString()}");
     var format = context.select((CalendarProvider cal) => cal.calendarFormat);
     var selectedDay = context.select((CalendarProvider cal) => cal.selectDay);
 
@@ -76,13 +62,6 @@ class _CalendarLayoutState extends State<CalendarLayout> {
           context.read<CalendarProvider>().select(selected);
         }
       },
-      // onFormatChanged: (format) {
-      //   if (_calendarFormat != format) {
-      //     setState(() {
-      //       _calendarFormat = format;
-      //     });
-      //   }
-      // },
       onCalendarCreated: (pageController) {
         context.read<CalendarProvider>().setController(pageController);
         Logger().d("Calendar Create !");

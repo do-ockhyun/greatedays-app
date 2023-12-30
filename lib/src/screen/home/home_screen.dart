@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:greatedays/src/provider/calendar/calendar_provider.dart';
 import 'package:greatedays/src/screen/home/widgets/calendar/calendar_handle_widget.dart';
 import 'package:greatedays/src/screen/home/widgets/calendar/calendar_layout.dart';
@@ -25,36 +26,35 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       elevation: 0,
       backgroundColor: Colors.white,
+      actions: [
+        IconButton(
+          onPressed: () {
+            GoRouter.of(context).goNamed("chat");
+          },
+          icon: const Icon(Icons.add, color: Colors.black),
+        ),
+      ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => CalendarProvider()),
-      ],
-      child: Builder(
-        builder: (ctx) {
-          return Scaffold(
-            appBar: appbar(ctx),
-            body: const Column(
-              children: [
-                Column(
-                  children: [
-                    CalendarLayout(),
-                    CalendarHandleWidget(),
-                  ],
-                ),
+    return Scaffold(
+      appBar: appbar(context),
+      body: const Column(
+        children: [
+          Column(
+            children: [
+              CalendarLayout(),
+              CalendarHandleWidget(),
+            ],
+          ),
 
-                //
-                Expanded(
-                  child: ContentLayout(),
-                ),
-              ],
-            ),
-          );
-        },
+          //
+          Expanded(
+            child: ContentLayout(),
+          ),
+        ],
       ),
     );
   }
