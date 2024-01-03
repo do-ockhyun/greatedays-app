@@ -25,11 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
         style: const TextStyle(color: Colors.black),
       ),
       elevation: 0,
-      backgroundColor: Colors.white,
       actions: [
         IconButton(
           onPressed: () {
-            GoRouter.of(context).goNamed("chat");
+            GoRouter.of(context).goNamed("new-chat");
           },
           icon: const Icon(Icons.add, color: Colors.black),
         ),
